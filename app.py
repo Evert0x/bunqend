@@ -34,8 +34,9 @@ def make_request(amount_string, description, recipient):
 def hello_world():
     data = json.loads(request.data)
     for k,v in data.items():
+        money = str(round(float(v), 2))
         phone = str(k).replace(" ", "")
-        make_request(str(v), "Sugar Split", phone)
+        make_request(money, "Sugar Split", phone)
     return 'Hello World!'
 
 @app.route('/image', methods=["POST"])
