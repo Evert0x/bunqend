@@ -5,6 +5,7 @@ from flask import Flask
 from flask import request
 import json
 from flask_cors import CORS
+from flask import jsonify
 app = Flask(__name__)
 CORS(app)
 
@@ -36,6 +37,15 @@ def hello_world():
         phone = str(k).replace(" ", "")
         make_request(str(v), "Sugar Split", phone)
     return 'Hello World!'
+
+@app.route('/image', methods=["POST"])
+def image():
+    print("Do machine learning stuff")
+    return jsonify({
+        "Zwarte bonen": 2.68,
+        "Knoflook": 7.00,
+        "Donuts": 3.32
+    })
 
 
 if __name__ == '__main__':
