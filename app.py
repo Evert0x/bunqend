@@ -4,7 +4,9 @@ from bunq.sdk.model.generated.object_ import Pointer, Amount, NotificationFilter
 from flask import Flask
 from flask import request
 import json
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 def make_request(amount_string, description, recipient):
     """
@@ -31,7 +33,8 @@ def make_request(amount_string, description, recipient):
 def hello_world():
     data = json.loads(request.data)
     for k,v in data.items():
-        make_request(str(v), "Sugar Split", k)
+        phone = str(k).replace(" ", "")
+        make_request(str(v), "Sugar Split", phone)
     return 'Hello World!'
 
 
