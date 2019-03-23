@@ -20,6 +20,12 @@ def make_request(amount_string, description, recipient):
         allow_bunqme=True
     )
 
+#   curl -X POST \
+#   https://82d8fd4a.ngrok.io \
+#   -H 'Content-Type: application/json' \
+#   -d '{
+#       "+31658578688": 12.00
+#   }'
 
 @app.route('/', methods=["POST"])
 def hello_world():
